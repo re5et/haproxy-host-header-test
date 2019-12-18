@@ -1,0 +1,18 @@
+version: "3.3"
+services:
+  node-server:
+    build:
+      context: ./server/
+    expose:
+      - "3000"
+    ports:
+      - "3000:3000"
+  haproxy:
+    build:
+      context: ./haproxy/
+    expose:
+      - "2000"
+    ports:
+      - "2000:2000"
+    links:
+      - node-server
